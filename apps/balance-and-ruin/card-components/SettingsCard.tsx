@@ -23,7 +23,7 @@ const modeOptions: SubflagOption[] = [
     defaultValue: true,
     isStatic: true,
   },
-  OPEN_WORLD,
+  OPEN_WORLD
 ];
 
 export const SettingsCard = () => {

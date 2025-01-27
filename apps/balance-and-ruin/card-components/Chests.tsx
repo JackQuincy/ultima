@@ -22,6 +22,16 @@ const contentOptions: SubflagOption[] = [
     ),
   },
   {
+    defaultValue: 20,
+    flag: "-ccswr",
+    helperText:
+      "Chests are shuffled with in each world, and each chest then has a {{ . }}% chance to be randomized",
+    label: "Shuffle By World + Random",
+    Renderable: ({ children }) => (
+      <FlagSlider helperText={""} flag="-ccswr" label={children} />
+    ),
+  },
+  {
     defaultValue: true,
     flag: "-ccrt",
     helperText:

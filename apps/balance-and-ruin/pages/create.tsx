@@ -4,6 +4,7 @@ import { FlagCreatePage } from "~/components/FlagCreatePage/FlagCreatePage";
 import { setRawFlags } from "~/state/flagSlice";
 import { setObjectiveMetadata } from "~/state/objectiveSlice";
 import { RawFlagMetadata, setSchema } from "~/state/schemaSlice";
+import { initItemMetadata } from "~/state/itemSlice";
 import { makeStore } from "~/state/store";
 import { ObjectiveMetadata } from "~/types/objectives";
 import { FlagPreset } from "~/types/preset";
@@ -57,6 +58,8 @@ const Create = () => {
         const fetchedVersion = data["version"]
         setVersion(fetchedVersion)
       })
+
+    store.dispatch(initItemMetadata())
   }, [])
 
   if(objectives && presets && schema && version) {

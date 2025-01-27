@@ -34,6 +34,26 @@ const randomEncounterOptions: SubflagOption[] = [
       </div>
     ),
   },
+  {
+    defaultValue: true,
+    flag: "-rews",
+    helperText: `Random encounters are shuffled by world. ${randomEncounterDescription}`,
+    label: "Shuffle by world",
+    isStatic: true,
+  },
+  {
+    defaultValue: 0,
+    flag: "-rewr",
+    helperText: `Random encounters have a {{.}}% chance to be a random boss. Encounters will be pulled from the world the encounter is in. ${randomEncounterDescription}`,
+    label: "Random from world with boss chance",
+    Renderable: ({ children }) => (
+      <div>
+        <div>
+          <FlagSlider flag="-rewr" helperText="" label={children} />
+        </div>
+      </div>
+    ),
+  },
 ];
 
 const fixedEncounterOptions: SubflagOption[] = [
@@ -44,6 +64,15 @@ const fixedEncounterOptions: SubflagOption[] = [
     label: "Random with boss chance",
     Renderable: ({ children }) => (
       <FlagSlider flag="-fer" helperText="" label={children} />
+    ),
+  },
+  {
+    defaultValue: 0,
+    flag: "-fewr",
+    helperText: `Fixed encounters have a {{.}}% chance to be a random boss. Encounters will be pulled from the world the encounter is in. ${fixedEncounterDescription}`,
+    label: "Random from world with boss chance",
+    Renderable: ({ children }) => (
+      <FlagSlider flag="-fewr" helperText="" label={children} />
     ),
   },
 ];

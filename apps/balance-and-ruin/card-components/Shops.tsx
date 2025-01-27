@@ -27,6 +27,16 @@ const inventoryOptions: SubflagOption[] = [
     ),
   },
   {
+    defaultValue: 20,
+    flag: "-siswr",
+    helperText:
+      "Shop content is shuffled between shops within their respective world. Items then have a {{.}}% to be randomized",
+    label: "Shuffle By World + Random",
+    Renderable: ({ children }) => (
+      <FlagSlider helperText={""} flag="-siswr" label={children} />
+    ),
+  },
+  {
     defaultValue: true,
     flag: "-sirt",
     helperText:

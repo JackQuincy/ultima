@@ -20,6 +20,13 @@ const battleOptions = [
     label: "Random",
     isStatic: true,
   },
+  {
+    defaultValue: true,
+    flag: "-bbws",
+    helperText: "Boss battles are shuffled within each world (No repeats)",
+    label: "Shuffled By World",
+    isStatic: true,
+  },
 ];
 
 const SHUFFLE_DRAGONS = {
