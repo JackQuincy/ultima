@@ -27,3 +27,5 @@ the new type.
 If you need to store new state across the page that is stored in the AppState in what are known as slices.
 The slices are defined in the `state` folder and referenced in `store.ts`. Any other services that need to be called
 or state loaded should happen in `create.tsx`
+
+jazer
