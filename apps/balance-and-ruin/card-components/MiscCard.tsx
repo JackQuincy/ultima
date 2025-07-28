@@ -120,6 +120,8 @@ export const MiscCard = () => {
         <FlagSwitch flag="-ond" label="Original Name Display" />
 
         <FlagSwitch flag="-npctips" label="NPC Tips" />
+
+        <FlagSwitch flag="-vc" label="Vanilla Zozo Clock" />
       </CardColumn>
     </Card>
   );
