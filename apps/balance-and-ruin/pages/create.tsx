@@ -2,6 +2,8 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { FlagCreatePage } from "~/components/FlagCreatePage/FlagCreatePage";
 import { setRawFlags } from "~/state/flagSlice";
+import { setRawObjectives } from "~/state/objectiveSlice";
+import { setRawStartingItems } from "~/state/itemSlice";
 import { setObjectiveMetadata } from "~/state/objectiveSlice";
 import { RawFlagMetadata, setSchema } from "~/state/schemaSlice";
 import { initItemMetadata } from "~/state/itemSlice";
@@ -47,6 +49,8 @@ const Create = () => {
           const flags = DecodeB64QueryStringParam(flagsParam)
           console.log("Setting starting flags from query string")
           store.dispatch(setRawFlags(flags));
+          store.dispatch(setRawObjectives(flags));
+          store.dispatch(setRawStartingItems(flags));
         } else {
           let preset: FlagPreset
           if (presetParam) {
@@ -56,6 +60,8 @@ const Create = () => {
           }
           if (preset) {
             store.dispatch(setRawFlags(preset.flags));
+            store.dispatch(setRawObjectives(preset.flags));
+            store.dispatch(setRawStartingItems(preset.flags));
           }
         }
       })
