@@ -5,9 +5,9 @@ import { setRawFlags } from "~/state/flagSlice";
 import { setObjectiveMetadata } from "~/state/objectiveSlice";
 import { RawFlagMetadata, setSchema } from "~/state/schemaSlice";
 import { initItemMetadata } from "~/state/itemSlice";
-import { makeStore } from "~/state/store";
 import { ObjectiveMetadata } from "~/types/objectives";
 import { FlagPreset } from "~/types/preset";
+import { singletonStore } from "~/pages/_app";
 
 export type PageProps = {
   objectives: ObjectiveMetadata;
@@ -21,20 +21,32 @@ const Create = () => {
   const [presets, setPresets] = useState(null)
   const [schema, setSchemaLocal] = useState(null)
   const [version, setVersion] = useState(null)
-  
 
   useEffect(() => {
-    const store = makeStore()
-
+    const store = singletonStore
     // fetch presets
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/presets`)
       .then((res) => res.json())
       .then((data) => {
         setPresets(data)
-        // TODO: figure out why this isn't having the desired effect -- it's defaulting to the startingFlags in flagSlice.ts -- a race condition?
-        const preset = data["ultros league"];
-        if (preset) {
-          store.dispatch(setRawFlags(preset.flags));
+        
+        const queryParameters = new URLSearchParams(window.location.search)
+        const flagsParam = queryParameters.get("flags")
+        if(flagsParam) {
+          let base64 = flagsParam.replace(/-/g, '+').replace(/_/g, '/');
+          // Add padding if necessary
+          while (base64.length % 4 !== 0) {
+            base64 += '=';
+          }
+          const buf = Buffer.from(base64, "base64")
+          const flags = buf.toString("utf-8")
+          console.log("Setting starting flags from query string")
+          store.dispatch(setRawFlags(flags));
+        } else {
+          const preset = data["ultros league"];
+          if (preset) {
+            store.dispatch(setRawFlags(preset.flags));
+          }
         }
       })
     

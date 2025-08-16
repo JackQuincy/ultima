@@ -107,8 +107,11 @@ export const itemSlice = createSlice({
                     } as StartingItems;
                 }
             );
-
-            state.items.items = items[0].items;
+            if (items && items.length > 0 && items[0]) {
+                state.items.items = items[0].items;
+            } else {
+                state.items.items = []
+            }
         },
     },
     // Special reducer for hydrating the state. Special case for next-redux-wrapper
