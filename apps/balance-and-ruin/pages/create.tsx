@@ -50,8 +50,7 @@ const Create = () => {
         } else {
           let preset: FlagPreset
           if (presetParam) {
-            const presetName = DecodeB64QueryStringParam(presetParam)
-            preset = data[presetName];
+            preset = data[presetParam];
           } else {
             preset = data["ultros league"];
           }
