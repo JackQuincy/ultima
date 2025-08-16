@@ -54,7 +54,7 @@ const Create = () => {
         } else {
           let preset: FlagPreset
           if (presetParam) {
-            preset = data[presetParam];
+            preset = data[presetParam.toLowerCase()];
           } else {
             preset = data["ultros league"];
           }
