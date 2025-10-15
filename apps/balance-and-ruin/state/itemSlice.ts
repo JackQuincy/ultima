@@ -97,8 +97,8 @@ export const itemSlice = createSlice({
                         tempItems.items.push({
                             id: id,
                             name: name,
-                            min: Number.parseInt(values[id + 1]),
-                            max: Number.parseInt(values[id + 2]),
+                            min: Number.parseInt(values[idx + 1]),
+                            max: Number.parseInt(values[idx + 2]),
                         });
                     });
 
