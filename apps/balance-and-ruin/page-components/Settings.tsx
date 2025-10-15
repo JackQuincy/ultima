@@ -14,7 +14,7 @@ export const Settings = ({ presets: rawPresets }: PresetsProps) => {
   const presets = useMemo(() => {
     const options = [];
     for (const rawPresetName in rawPresets) {
-      if(rawPresets[rawPresetName].official) {
+      if(rawPresets[rawPresetName].official || rawPresetName == 'pootsleague' || rawPresetName == 'Worlds Divided') {
         options.push(rawPresets[rawPresetName]);
       }
     }
