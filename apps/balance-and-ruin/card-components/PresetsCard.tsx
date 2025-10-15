@@ -20,7 +20,7 @@ export const PresetsCard = ({ presets }: PresetsCardProps) => {
     <Card title={"Presets"}>
       <div className="flex flex-col gap-1">
         <InputLabel htmlFor="tournament-preset-select">
-          Tournament Presets
+          Presets
         </InputLabel>
         <Select
           options={presets}
