@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { CardColumn } from "~/components/CardColumn/CardColumn";
 import { FlagLabel } from "~/components/FlagLabel/FlagLabel";
 import { FlagNumberInput } from "~/components/FlagNumberInput/FlagNumberInput";
+import { FlagSlider } from "~/components/FlagSlider/FlagSlider";
 import { StartingItemSelect } from "~/components/StartingItemSelect/StartingItemSelect";
 import { StartingItemsAddItemButton } from "~/components/StartingItemsAddItemButton/StartingItemsAddItemButton";
 import { setFlag } from "~/state/flagSlice";
@@ -46,6 +47,23 @@ export const StartingGoldAndItems = ({ items, curateItems }: StartingItemsProps)
           label="Starting Gold"
           type="int"
         />
+
+        <FlagSlider
+          flag="-smc"
+          helperText="Begin the game with {{ . }} Moogle Charms"
+          label="(Old Style) Starting Moogle Charms"
+        />
+        <FlagSlider
+          helperText="Begin the game with {{ . }} Warp Stones"
+          flag="-sws"
+          label="(Old Style) Starting Warp Stones"
+        />
+        <FlagSlider
+          helperText="Begin the game with {{ . }} Fenix Downs"
+          flag="-sfd"
+          label="(Old Style) Starting Fenix Downs"
+        />
+
         <div className={"flex justify-between items-center gap-4"}>
           <FlagLabel
             flag={"-si"}
