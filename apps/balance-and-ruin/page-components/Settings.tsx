@@ -21,7 +21,8 @@ export const Settings = ({ presets: rawPresets }: PresetsProps) => {
         rawPresetName == 'chocobo' ||
         rawPresetName == 'mountain' ||
         rawPresetName == 'river' ||
-        rawPresetName == 'golden'
+        rawPresetName == 'golden' ||
+        rawPresetName == 'Atma Series'
       ) {
         options.push(rawPresets[rawPresetName]);
       }
