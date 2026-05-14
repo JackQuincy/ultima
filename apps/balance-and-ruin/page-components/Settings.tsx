@@ -22,7 +22,8 @@ export const Settings = ({ presets: rawPresets }: PresetsProps) => {
         rawPresetName == 'mountain' ||
         rawPresetName == 'river' ||
         rawPresetName == 'golden' ||
-        rawPresetName == 'Atma Series'
+        rawPresetName == 'Atma Series' ||
+        rawPresetName == 'Super Ball Relay'
       ) {
         options.push(rawPresets[rawPresetName]);
       }
