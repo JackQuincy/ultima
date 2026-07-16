@@ -32,7 +32,7 @@ export const FlagRange = ({
 }: FlagRangeProps) => {
   const minRef = useRef<HTMLInputElement>(null);
   const maxRef = useRef<HTMLInputElement>(null);
-  const value = useFlagValueSelector<number[]>(flag);
+  const rawValue = useFlagValueSelector<number | number[]>(flag);
 
   const allowedValues = useSelector(selectAllowedValues(flag)) ?? [];
   const schemaDescription = useSelector(selectDescription(flag));
@@ -57,7 +57,15 @@ export const FlagRange = ({
     return Number.parseFloat((val || "0").toString());
   };
 
-  const [minVal, maxVal] = value || [];
+  // Older flag strings may provide a single value (for example, `-stl 3`),
+  // while newer forms provide a range (`-stl 3 10`). Treat a single value as
+  // a fixed range so both forms can be displayed and edited safely.
+  const value = Array.isArray(rawValue)
+    ? rawValue
+    : rawValue == null
+    ? undefined
+    : [rawValue, rawValue];
+  const [minVal, maxVal] = value ?? [];
   const min = (
     allowedValues.length ? allowedValues[0] : schemaMin ?? 0
   ) as number;
