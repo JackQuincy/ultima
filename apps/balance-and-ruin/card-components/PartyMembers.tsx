@@ -17,10 +17,10 @@ const options = [
   randomngu,
   ...characterNames.map(
     (id) =>
-      ({
-        value: id,
-        label: startCase(id),
-      } as FlagSelectOption)
+    ({
+      value: id,
+      label: startCase(id),
+    } as FlagSelectOption)
   ),
 ];
 
@@ -28,7 +28,7 @@ export const PartyMembers = () => {
   return (
     <Card title={"Party Members"}>
       <div className="flex flex-col flex-wrap gap-2">
-        <FlagSlider
+        <FlagRange
           flag="-stl"
           helperText="Starting party begins the game at level {{ . }}"
           label="Starting Party Level"
